@@ -2,56 +2,30 @@ import React from 'react';
 
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
 
-import api from '../../services/api';
-
 import './styles.css';
 
-export interface Teacher {
-  id: number;
-  avatar: string;
-  bio: string;
-  cost: number;
-  name: string;
-  subject: string;
-  whatsapp: string;
-}
-
-export interface TeacherItemProps {
-  teacher: Teacher;
-}
-
-const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
-  function createNewConnection() {
-    api.post('connections', {
-      user_id: teacher.id,
-    });
-  }
-
+const TeacherItem: React.FC = () => {
   return (
     <article className="teacher-item">
       <header>
-        <img src={teacher.avatar} alt={teacher.name} />
+        <img src="https://github.com/mamede.png" alt="Felipe Mamede" />
         <div>
-          <strong>{teacher.name}</strong>
-          <span>{teacher.subject}</span>
+          <strong>Felipe Mamede</strong>
+          <span>Programação</span>
         </div>
       </header>
-      <p>{teacher.bio}</p>
-
+      <p>Entusiasta das melhores tecnologias de programação.
+        Apaixonado por difundir conhecimento e por mudar a vida das pessoas através das maiores experiências em programação. 
+        Mais de 200.000 pessoas já passaram por aqui.</p>
       <footer>
         <p>
           Preço/hora
-          <strong>R$ {teacher.cost}</strong>
+          <strong>R$ 60,00</strong>
         </p>
-        <a
-          onClick={createNewConnection}
-          target="_blank"
-          rel="noopener noreferrer"
-          href={`https://wa.me/${teacher.whatsapp}`}
-        >
+        <button>
           <img src={whatsappIcon} alt="Whatsapp"/>
           Entrar em contato
-        </a>
+        </button>
       </footer>
     </article>
   );
